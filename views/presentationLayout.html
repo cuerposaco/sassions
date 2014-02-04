@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="/vendor/revealjs/css/reveal.min.css">
+<link rel="stylesheet" href="/vendor/revealjs/css/theme/sky.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="/vendor/revealjs/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+	document.write( '<link rel="stylesheet" href="/vendor/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="/vendor/revealjs/lib/js/html5shiv.js"></script>
+<![endif]-->
+{% endblock %}
+
+{% block body %}
+	<div class="reveal">
+		{% block presentationContent %}{% endblock %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	{% parent %}
+	<script src="/vendor/revealjs/lib/js/head.min.js"></script>
+	<script src="/vendor/revealjs/js/reveal.min.js"></script>
+	<script>
+		$(function(){
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'vendor/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'vendor/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'vendor/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'vendor/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'vendor/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'vendor/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		});
+	</script>
+{% endblock %}

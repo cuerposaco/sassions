@@ -1,0 +1,48 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.panel-body {
+	padding: 1px !important;
+}
+
+.container {
+	margin-top: 15px;
+}
+
+iframe {
+	width: 100%;
+	min-height: 400px;
+}
+
+.SassPanel .label {
+	display:none;
+	float: right;
+}
+
+.SassPanel .changing .label {
+	display:inline-block;
+}
+
+/*
+.SassPanel .CodeMirror, .CssPanel .CodeMirror{
+	height: 500px;
+}
+*/
+.CodeMirror {
+	height: 100%;
+}
+
+.resizeme {
+	max-width:100%;
+	height: auto !important;
+}
+.resizemeCon {
+	max-width:100%;
+	height: auto !important;
+}

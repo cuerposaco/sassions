@@ -1,0 +1,349 @@
+{% extends 'presentationLayout.html' %}
+
+{% block presentationContent %}
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<h1>SaSSions</h1>
+			<img src="/images/logo-235e394c.png" style="border: none;box-shadow: none;width: 20%;">
+			<p>Escribe menos CSS con Sass</p>
+			<code><a href="http://sass-lang.com/">http://sass-lang.com/</a></code>
+		</section>
+		<section>
+			<p>CSS es nuestra herramienta de batalla para ordenar y dar una capa visual a la web.</p>
+			<p>Pero se puede convertir en un auténtico dolor de cabeza cuando los archivos crecen mucho.</p>
+			<p>El problema más común al trabajar con css son las <strong>contínuas repeticiones de código</strong> (colores, borders, vendors,...)</p>
+			<pre><code class="css">.container{
+        border-color : #fabada;
+               color : #fabada;
+  -webkit-box-sizing : border-box;
+     -moz-box-sizing : border-box;
+       -o-box-sizing : border-box;
+      -ms-box-sizing : border-box;
+          box-sizing : border-box;
+}
+.container p {
+	-webkit-box-sizing : border-box;
+     -moz-box-sizing : border-box;
+       -o-box-sizing : border-box;
+      -ms-box-sizing : border-box;
+          box-sizing : border-box;
+}</code></pre>
+		</section>
+		<section>
+			<img src="/images/logo-235e394c.png" style="border: none;box-shadow: none;width: 20%;">
+			<p>El mismo código</p>
+			<pre><code class="scss">$mainColor: #fabada;
+@mixin boxSizing($val:border-box){
+  -webkit-box-sixing: $val;
+  -moz-box-sixing: $val;
+  -o-box-sixing: $val;
+  -ms-box-sixing: $val;
+  box-sixing: $val;
+}
+
+.container{
+  border-color: $mainColor;
+  color: $mainColor;
+  @include boxSizing();
+  p {
+    @include boxSizing();
+  }
+}</code></pre>
+		</section>
+
+		<section>
+			<section>
+				<h1>Instalación</h1>
+				<p>Sass está desarrollado en Ruby, y generado como una gema, lo que permite su instalacion mediante el administrador de paquetes (package manager) de ruby <code>gem</code>, por tanto, para poder trabajar con sass es necesario tener instalado Ruby.</p>
+			</section>
+			<section>
+				<h3>Instalando en <strong>Windows</strong></h3>
+				<img src="/images/logoRubyInstaller.png" style="border: none;box-shadow: none;width: 20%;">
+				<p>
+					<strong>Ruby Installer</strong>
+					(<a href="http://www.rubyinstaller.org/">http://www.rubyinstaller.org/</a>)
+				</p>
+				<p>facilita la instalación de Ruby mediante un cómodo instalador</p>
+				<p>Una vez acabada la instalación de ruby instalamos sass</p>
+				<pre><code>$ gem install sass</code></pre>
+				<p>Verificamos que se encuentra instalado correctamente</p>
+				<pre><code>$ sass -v</code></pre>
+			</section>
+			<section>
+				<h3>Instalando en <strong>OSX</strong></h3>
+				<p>Ruby viene instalado por defecto en OSX, sólo hay que instalar la gema de Sass</p>
+				<pre><code>$ gem install sass</code></pre>
+				<p>Verificamos que se encuentra instalado correctamente</p>
+				<pre><code>$ sass -v</code></pre>
+			</section>
+		</section>
+
+		<section>
+			<h3>Carácterísticas de Sass</h3> 
+			<p>Sass son los mismos css de siempre pero con superpoderes</p>
+			<ul>
+				<li class="fragment" ><a href="/presentation#/5">Preprocessing <small>(.scss --> .css)</small></a></li>
+				<li class="fragment" ><a href="/presentation#/6">Variables</a></li>
+				<li class="fragment" >Nesting <small>(Selectores enlazados)</small></li>
+				<li class="fragment" >Import <small>(importado de archivos)</small></li>
+				<li class="fragment" >Partials <small>(archivos parciales)</small></li>
+				<li class="fragment" >Mixins <small>(funciones)</small></li>
+				<li class="fragment" >Inheritance <small>(Herencia de clases)</small></li>
+				<li class="fragment" >Operators <small>(+, -, /, * ...)</small></li>
+			</ul>
+		</section>
+		
+		<section>
+			<h2>Preprocessing</h2>
+			<img src="/images/preprocessing.png" style="border: none;box-shadow: none;">
+			<p></p>
+			<p>Sass se escribe en unos archivos con extension <strong>scss</strong> y sass los procesa en archivo/s <strong>css</strong> que puedes ser usados en la web</p>
+		</section>
+		
+		<section>
+			<section>
+				<h2>Variables</h2>
+				<p>Almacenamos información que vamos a reutilizar a lo largo de nuestra hoja de estilos.</p>
+				<p>La declaración de variables siempre empieza con <code>$</code></p>
+				<p>
+				<pre><code class="sass">$mainFont: 'Helvetica', sans;
+$mainColor: #c3c3c3;
+
+p {
+  font: 10px $mainFont;
+  color: $mainColor;
+}</code></pre>
+				<pre><code class="css">p {
+  font: 10px 'Helvetica', sans;
+  color: #c3c3c3; }</code></pre>
+				</p>
+			</section>
+			<section>
+				<h3>Tipos de variables</h3>
+				<p><small>Declaraciones de algunos tipos de valiables</small></p>
+				<ul style="display: block;">
+					<li>
+						<p>Booleanos</p>
+						<pre><code>$rounded: true;</code></pre>
+					</li>
+					<li>
+						<p>Números</p>
+						<pre><code>$fontSize: 10;
+$lineHeight: 0.7em;</code></pre>
+					</li>
+					<li>
+						<p>Colores</p>
+						<pre><code>$main: purple;
+$alert: #ff0000;
+$transparent: rgba(white, 0.5);</code></pre>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Tipos de variables <small>(cont.)</small></h3>
+				<ul style="display: block;">
+					<li>
+						<p>Literales</p>
+						<pre><code class="scss">$font: 'Helvetica';
+$content: "Cargando..." </code></pre>
+					</li>
+					<li>
+						<p>Listas</p>
+						<pre><code class="scss">$colors: red, green, blue, yellow;
+$margins: 10px 40px 0 10px; </code></pre>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ámbito de las variables</h3>
+				<p>Las variables declaradas dentro de una declaracion <strong>(dentro de <code>{ }</code>)</strong> no pueden ser utlizadas fuera de ese bloque</p><pre><code class="scss">p {
+  $mainFont: 'Helvetica', sans;
+  font: 10px $mainFont;
+}
+h1 { font: 14px $mainFont; }</code></pre><pre><code>error: unbound variable $mainFont</code></pre>
+			</section>
+			<section>
+				<h3>Ámbito de las variables <small>(cont.)</small></h3>
+				<p>Definiendo nuevos valores a variables "globales" modifica su valor para el resto de instancias</p>
+						<pre><code class="scss">$mainColor: #c3c3c3;
+
+p {
+  color: $mainColor;
+  $mainColor: #333;
+}
+h1 { color: $mainColor; }</code></pre>
+						<pre><code class="scss">p {color: #c3c3c3; } h1 {color: #333; }</code></pre>
+			</section>
+			<section>
+				<h3>Escapando el valor de las variables</h3>
+				<p>Podemos escapar el valor de las variables para utilizar como <strong>selector, propiedad o literal</strong>, utilizando el formato: <code>#{$variable}</code></p>
+				<pre><code class="scss">$top : top;
+
+p {
+  span-#{$top}{
+    #{$top}:10px;
+  }
+}</code></pre>
+				<pre><code class="scss">p span-top {top: 10px; }</code></pre>
+			</section>
+		</section>
+		
+		<section>
+			<section>
+				<h2>Nesting</h2>
+				<p><small>(Selectores enlazados)</small></p>
+				<p>Podemos enlazar selectores unos dentro de otros utilizando la misma herarquía que se encuantran el los documentos HTML</p>
+				<pre><code class="scss">nav {
+  border-bottom: 1px solid #ff0000;
+  
+  ul {
+    list-style: none;
+    li { padding-left: 10px; }
+  }
+
+  a {
+      text-decoration: none; 
+      &:hover {
+        color: gray;
+      }
+  }
+}</code></pre>
+				<p><small>El símbolo <code>&</code> hace referencia al selector padre</small></p>
+			</section>
+			<section>
+				<h3>Nesting</h3>
+				<p><small>(Propiedades enlazadas)</small></p>
+				<pre><code class="scss">p { 
+	&.especial {
+	  font: {
+	    family: "Helvetica", sans;
+	    color: red;
+	    weight: bold;
+	  }
+	}
+}</code></pre>
+				
+			</section>
+		</section>
+		
+		<section>
+			<h2>Import</h2>
+			<p><small>(Importación de archivos externos)</small></p>
+			<p><small>CSS permite importar porciones de código de otros archivos, haciendo nuetro código mantenible y escalable.</small></p>
+			<p><code>@import url('partial/partial.css');</code></p>
+			<p><small>Por cada <code>@import</code>, el navegador realiza una peticón HTTP<br/>Sass importa los archivos combinándolos, sirviendo un sólo archivo CSS</small></p>
+			<pre><code class="scss">@import 'partials/partial';
+
+.container {
+  margin:0 auto;
+  width: 996px;
+  padding: 0 10px;
+}</code></pre>
+		<p><small>en la importación no es necesario incluir la extensión del archivo</small></p>
+		</section>
+
+		<section>
+			<h2>Partials</h2>
+			<p>Podemos generar archivos parciales con pequeños trozos de código (snippets) que serán incluídos dentro de el archivo final css</p>
+			<p>Éstos archivos parciales van nombrados con un <strong>guión bajo <code>(_)</code></strong> en el nombre del archivo</p>
+			<code>_partials.css</code>
+			<pre><code class="scss">// _partials.css
+@import 'partials/partial';</code></pre>
+		</section>
+		
+		<section>
+			<section>
+				<h2>Mixins</h2>
+				<p><small>Bloques de código repetitivo que puede tomar argumentos opcionales. <br/> Se comportan como funciones</small></p>
+				<ul>
+					<li><p><strong>Declaración: </strong> <code>@mixin mixinName { //codigo }</code></p></li>
+					<li><p><strong>Llamada: </strong> <code>@include mixinName;</code></p></li>
+				</ul>
+				<pre><code class="scss">@mixin linkBtn {
+  text: {
+    decoration:none;
+    transform: uppercase;
+  }
+  color: #fabada;
+}
+
+ul.mainNav {
+  a {
+    @include linkBtn;
+    background-color: #c3c3c3;
+  }
+}</code></pre>
+			</section>
+			<section>
+				<pre><code class="scss">@mixin boxShadow{
+  -webkit-box-shadow: 0px 1px 1px rgba(black, 0.3);
+  -moz-box-shadow: 0px 1px 1px rgba(black, 0.3);
+  -o-box-shadow: 0px 1px 1px rgba(black, 0.3);
+  -ms-box-shadow: 0px 1px 1px rgba(black, 0.3);
+  box-shadow: 0px 1px 1px rgba(black, 0.3);
+}
+
+.module-a {
+  @include boxShadow;
+  background-color: white;
+}
+
+.module-b {
+  @include boxShadow;
+  background-color: red;
+}</code></pre>
+			</section>
+			<section>
+				<p>argumentos</p>
+				<pre><code class="scss">@mixin boxShadow($ops){
+  -webkit-box-shadow: $ops;
+  -moz-box-shadow: $ops;
+  -o-box-shadow: $ops;
+  -ms-box-shadow: $ops;
+  box-shadow: $ops;
+}
+
+.module-a {
+  @include boxShadow(0px 1px 1px rgba(black, 0.3));
+  background-color: white;
+}
+
+.module-b {
+  @include boxShadow(0px 1px 1px rgba(red, 0.3));
+  background-color: red;
+}</code></pre>
+			</section>
+			<section>
+				<p>argumentos mútiples</p>
+				<pre><code class="scss">@mixin boxShadow($xoffset, $yoffset, $blur, $color){
+  -webkit-box-shadow: $xoffset $yoffset $blur $color;
+  -moz-box-shadow: $xoffset $yoffset $blur $color;
+  -o-box-shadow: $xoffset $yoffset $blur $color;
+  -ms-box-shadow: $xoffset $yoffset $blur $color;
+  box-shadow: $xoffset $yoffset $blur $color;
+}
+
+.module-a {
+  @include boxShadow(0px 1px 1px rgba(black, 0.3));
+  background-color: white;
+}
+
+.module-b {
+  @include boxShadow(0px 1px 1px rgba(red, 0.3));
+  background-color: red;
+}</code></pre>
+			</section>
+		</section>
+		
+		<section>
+			<h2>Inheritance</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, omnis ullam ex ipsa dignissimos quis provident corrupti magnam molestiae eaque voluptas laboriosam perferendis optio eos atque voluptatum officiis unde amet.</p>
+		</section>
+		
+		<section>
+			<h2>Operators</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, pariatur, ex consectetur mollitia assumenda blanditiis repellendus. Incidunt, quidem, qui soluta minima delectus veritatis possimus voluptatum distinctio iste iusto praesentium eos!</p>
+		</section>
+	</div>
+{% endblock %}
