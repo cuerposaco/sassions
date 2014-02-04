@@ -80,6 +80,51 @@
 		</section>
 
 		<section>
+			<section>
+				<h3>Primeros pasos</h3>
+				<ul>
+					<li>
+						<small>Procesar un archivo</small>
+						<pre><code>$ sass input.scss output.css</code></pre>
+					</li>
+					<li>
+						<small>Escuchar los cambios de un archivo y procesarlo</small>
+						<pre><code>$ sass --watch input.scss:output.css</code></pre>
+					</li>
+					<li>
+						<small>Escuchar un directorio entero y procesarlo en otro directorio</small>
+						<pre><code>$ sass --watch app/sass:public/stylesheets</code></pre>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Configurando la salida</h3>
+				<pre><code>$ sass input.scss output.css --style [nested|expanded|compact|compressed]</code></pre>
+				<small>
+					<ul>
+						<li>
+							<p><strong>nested</strong> (por defecto)</p>
+							<p>Cada propiedad tiene su propia línea. Cada regla es indentada en base de su profundidad</p>
+						</li>
+						<li>
+							<p><strong>expanded</strong></p>
+							<p>La más común. Cada regla y propiedad tienen su propia línea.</p>
+						</li>
+						<li>
+							<p><strong>compact</strong></p>
+							<p>Cada regla tiene su propia línea, las propiedades se apilan una detrás de la otra en una sola línea.</p>
+							<p>Las reglas enlazadas van en líneas consecutivas.</p>
+						</li>
+						<li>
+							<p><strong>compressed</strong></p>
+							<p>Ésta opción toma la cantidad mínima depacio posible, eliminando los espacios innecesarios(los espacios entre selectoeres son necesarios) y retornos de carro.</p>
+						</li>
+					</ul>
+				</small>
+			</section>
+		</section>
+
+		<section>
 			<h3>Carácterísticas de Sass</h3> 
 			<p>Sass son los mismos css de siempre pero con superpoderes</p>
 			<ul>
@@ -89,13 +134,13 @@
 				<li class="fragment" >Import <small>(importado de archivos)</small></li>
 				<li class="fragment" >Partials <small>(archivos parciales)</small></li>
 				<li class="fragment" >Mixins <small>(funciones)</small></li>
-				<li class="fragment" >Inheritance <small>(Herencia de clases)</small></li>
-				<li class="fragment" >Operators <small>(+, -, /, * ...)</small></li>
+				<li class="fragment" >Herencia <small>(Herencia de clases)</small></li>
+				<li class="fragment" >Operaciones <small>(+, -, /, * ...)</small></li>
 			</ul>
 		</section>
 		
 		<section>
-			<h2>Preprocessing</h2>
+			<h3>Preprocessing</h3>
 			<img src="/images/preprocessing.png" style="border: none;box-shadow: none;">
 			<p></p>
 			<p>Sass se escribe en unos archivos con extension <strong>scss</strong> y sass los procesa en archivo/s <strong>css</strong> que puedes ser usados en la web</p>
@@ -104,9 +149,10 @@
 		<section>
 			<section>
 				<h2>Variables</h2>
-				<p>Almacenamos información que vamos a reutilizar a lo largo de nuestra hoja de estilos.</p>
-				<p>La declaración de variables siempre empieza con <code>$</code></p>
-				<p>
+				<small>
+					<p>Almacenamos información que vamos a reutilizar a lo largo de nuestra hoja de estilos.</p>
+					<p>La declaración de variables siempre empieza con <code>$</code></p>
+				</small>
 				<pre><code class="sass">$mainFont: 'Helvetica', sans;
 $mainColor: #c3c3c3;
 
@@ -157,7 +203,10 @@ $margins: 10px 40px 0 10px; </code></pre>
 			</section>
 			<section>
 				<h3>Ámbito de las variables</h3>
-				<p>Las variables declaradas dentro de una declaracion <strong>(dentro de <code>{ }</code>)</strong> no pueden ser utlizadas fuera de ese bloque</p><pre><code class="scss">p {
+				<small>
+					<p>Las variables declaradas dentro de una declaracion <strong>(dentro de <code>{ }</code>)</strong> no pueden ser utlizadas fuera de ese bloque</p>
+				</small>
+				<pre><code class="scss">p {
   $mainFont: 'Helvetica', sans;
   font: 10px $mainFont;
 }
@@ -165,7 +214,9 @@ h1 { font: 14px $mainFont; }</code></pre><pre><code>error: unbound variable $mai
 			</section>
 			<section>
 				<h3>Ámbito de las variables <small>(cont.)</small></h3>
-				<p>Definiendo nuevos valores a variables "globales" modifica su valor para el resto de instancias</p>
+				<small>
+					<p>Definiendo nuevos valores a variables "globales" modifica su valor para el resto de instancias</p>
+				</small>
 						<pre><code class="scss">$mainColor: #c3c3c3;
 
 p {
@@ -177,7 +228,9 @@ h1 { color: $mainColor; }</code></pre>
 			</section>
 			<section>
 				<h3>Escapando el valor de las variables</h3>
-				<p>Podemos escapar el valor de las variables para utilizar como <strong>selector, propiedad o literal</strong>, utilizando el formato: <code>#{$variable}</code></p>
+				<small>
+					<p>Podemos escapar el valor de las variables para utilizar como <strong>selector, propiedad o literal</strong>, utilizando el formato: <code>#{$variable}</code></p>
+				</small>
 				<pre><code class="scss">$top : top;
 
 p {
@@ -192,8 +245,10 @@ p {
 		<section>
 			<section>
 				<h2>Nesting</h2>
-				<p><small>(Selectores enlazados)</small></p>
-				<p>Podemos enlazar selectores unos dentro de otros utilizando la misma herarquía que se encuantran el los documentos HTML</p>
+				<p>(Selectores enlazados)</p>
+				<small>
+					<p>Podemos enlazar selectores unos dentro de otros utilizando la misma herarquía que se encuantran el los documentos HTML</p>
+				</small>
 				<pre><code class="scss">nav {
   border-bottom: 1px solid #ff0000;
   
@@ -213,7 +268,10 @@ p {
 			</section>
 			<section>
 				<h3>Nesting</h3>
-				<p><small>(Propiedades enlazadas)</small></p>
+				<p>(Propiedades enlazadas)</p>
+				<small>
+					<p>Algunas propiedades también pueden enlazarse (font, border, padding, ...)</p>
+				</small>
 				<pre><code class="scss">p { 
 	&.especial {
 	  font: {
@@ -229,10 +287,12 @@ p {
 		
 		<section>
 			<h2>Import</h2>
-			<p><small>(Importación de archivos externos)</small></p>
-			<p><small>CSS permite importar porciones de código de otros archivos, haciendo nuetro código mantenible y escalable.</small></p>
-			<p><code>@import url('partial/partial.css');</code></p>
-			<p><small>Por cada <code>@import</code>, el navegador realiza una peticón HTTP<br/>Sass importa los archivos combinándolos, sirviendo un sólo archivo CSS</small></p>
+			<p>(Importación de archivos externos)</p>
+			<small>
+				<p>CSS permite importar porciones de código de otros archivos, haciendo nuetro código mantenible y escalable.</p>
+				<p><code>@import url('partial/partial.css');</code></p>
+				<p>Por cada <code>@import</code>, el navegador realiza una peticón HTTP<br/>Sass importa los archivos combinándolos, sirviendo un sólo archivo CSS</p>
+			</small>
 			<pre><code class="scss">@import 'partials/partial';
 
 .container {
@@ -256,10 +316,12 @@ p {
 			<section>
 				<h2>Mixins</h2>
 				<p><small>Bloques de código repetitivo que puede tomar argumentos opcionales. <br/> Se comportan como funciones</small></p>
+				<small>
 				<ul>
 					<li><p><strong>Declaración: </strong> <code>@mixin mixinName { //codigo }</code></p></li>
 					<li><p><strong>Llamada: </strong> <code>@include mixinName;</code></p></li>
 				</ul>
+				</small>
 				<pre><code class="scss">@mixin linkBtn {
   text: {
     decoration:none;
@@ -276,6 +338,7 @@ ul.mainNav {
 }</code></pre>
 			</section>
 			<section>
+				<p>@mixin</p>
 				<pre><code class="scss">@mixin boxShadow{
   -webkit-box-shadow: 0px 1px 1px rgba(black, 0.3);
   -moz-box-shadow: 0px 1px 1px rgba(black, 0.3);
@@ -295,7 +358,7 @@ ul.mainNav {
 }</code></pre>
 			</section>
 			<section>
-				<p>argumentos</p>
+				<p>@mixin (argumentos)</p>
 				<pre><code class="scss">@mixin boxShadow($ops){
   -webkit-box-shadow: $ops;
   -moz-box-shadow: $ops;
@@ -315,7 +378,7 @@ ul.mainNav {
 }</code></pre>
 			</section>
 			<section>
-				<p>argumentos mútiples</p>
+				<p>@mixin (arg1, arg2, ..., argN)</p>
 				<pre><code class="scss">@mixin boxShadow($xoffset, $yoffset, $blur, $color){
   -webkit-box-shadow: $xoffset $yoffset $blur $color;
   -moz-box-shadow: $xoffset $yoffset $blur $color;
@@ -325,25 +388,121 @@ ul.mainNav {
 }
 
 .module-a {
-  @include boxShadow(0px 1px 1px rgba(black, 0.3));
+  @include boxShadow(0px, 1px, 1px, rgba(black, 0.3));
   background-color: white;
 }
 
 .module-b {
-  @include boxShadow(0px 1px 1px rgba(red, 0.3));
+  @include boxShadow(0px, 1px, 1px, rgba(red, 0.3));
   background-color: red;
 }</code></pre>
 			</section>
 		</section>
 		
 		<section>
-			<h2>Inheritance</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, omnis ullam ex ipsa dignissimos quis provident corrupti magnam molestiae eaque voluptas laboriosam perferendis optio eos atque voluptatum officiis unde amet.</p>
+			<section>
+				<h2>Herencia</h2>
+			<p>Extensión de clases</p>
+			<small>
+				<p><code>@extend .class</code></p>
+			</small>
+			<pre><code class="scss">.alert{
+  position: absolute;
+  top: 5%; left: 5%; bottom: 5%; right: 5%;
+  background-color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+.warning{
+  @extend .alert;
+  border: 2px solid orange;
+}
+
+.success{
+  @extend .alert;
+  border: 2px solid olive;
+}</code></pre>
+			</section>
+			<section>
+				<h2>Herencia</h2>
+				<p><strong>!! Atencion !!</strong></p>
+				<pre><code class="scss">.btn-a{
+  text-transform:uppercase;
+}
+
+.btn-b { @extend .btn-a; }
+
+.container .btn-a{
+  text-transform: uppercase;
+}</code></pre>
+				<pre><code class="css">.btn-a, .btn-b {
+  text-transform: uppercase; }
+
+.container .btn-a, .container .btn-b {
+  text-transform: uppercase; }</code></pre>
+  				<p><small>Desde que una <strong>clase extiende a la otra</strong>, todo cambio que se produzca en la clase original, también lo hará en las extendidas, generando codigo innecesario</small></p>
+			</section>
+			<section>
+				<h2>Herencia</h2>
+				<p><strong>Solución</strong></p>
+				<p>Placeholder selector (<code>%</code>) <br/><small>Puede extenderse, pero nunca actúa como un selector en sí mismo</small></p>
+				<pre><code class="scss">%btn{
+  text-transform: lowercase;
+}
+.btn-a { @extend %btn; color: green; }
+.btn-b { @extend %btn; color: red; }
+
+.container .btn-a {
+  text-transform: uppercase;
+}</code></pre>
+<pre><code class="css">.btn-a, .btn-b { text-transform: lowercase; }
+.btn-a { color: green; }
+.btn-b { color: red; }
+.container .btn-a { text-transform: uppercase; }</code></pre>
+			</section>
 		</section>
 		
 		<section>
-			<h2>Operators</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, pariatur, ex consectetur mollitia assumenda blanditiis repellendus. Incidunt, quidem, qui soluta minima delectus veritatis possimus voluptatum distinctio iste iusto praesentium eos!</p>
+			<section>
+				<h2>Operaciones</h2>
+				<p><strong>Aritmética básica</strong></p>
+				<small>
+				<ul>
+					<li><strong><code>+</code></strong> suma</li>
+					<li><strong><code>-</code></strong> resta</li>
+					<li><strong><code>*</code></strong> multiplicación</li>
+					<li><strong><code>/</code></strong> división</li>
+					<li><strong><code>%</code></strong> módulo</li>
+				</ul>
+				</small>
+				<pre><code class="scss">$family: "Helvetica " + "Neue";  // "Helvetica Neue"
+font-size: 10px + 4pt;  // font-size: 14px;
+width: 600px / 960px * 100%; // width: 62.5%;</code></pre>
+			</section>
+			<section>
+				<h2>Operaciones</h2>
+				<p><strong>Utilidades matemáticas predefinidas</strong></p>
+				<small>
+				<ul>
+					<li><strong><code>round($number)</code></strong> - redondeo</li>
+					<li><strong><code>ceil($number)</code></strong> - redondeo arriba</li>
+					<li><strong><code>floor($number)</code></strong> - redondeo abajo</li>
+					<li><strong><code>abs($number)</code></strong> - valor absoluto</li>
+					<li><strong><code>min($list)</code></strong> - valor mínimo de una lista</li>
+					<li><strong><code>max($list)</code></strong> - valor máximo de una lista</li>
+					<li><strong><code>percentage($number)</code></strong> - valor a porcentaje</li>
+				</ul>
+				</small>
+				<pre><code class="scss">width: percentage(350px/1000px); // width: 35%;
+line-height: ceil(1.2em); // line-height: 2em;
+				</code></pre>
+			</section>
+		</section>
+		<section>
+			<h1>That's all folks!!</h1>
+			<img src="/images/logo-235e394c.png" style="border: none;box-shadow: none;width: 20%;">
+			<p><code><a href="http://sass-lang.com/">http://sass-lang.com/</a></code></p>
 		</section>
 	</div>
 {% endblock %}
