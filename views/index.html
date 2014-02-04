@@ -33,6 +33,17 @@
 				</ul>
 			</li>
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">css Output <b class="caret"></b></a>
+				<ul class="dropdown-menu outputCss">
+					<li class="active"><a href="#nested">nested</a></li>
+					<li><a href="#expanded">expanded</a></li>
+					<li><a href="#compact">compact</a></li>
+					<li><a href="#compressed">compressed</a></li>
+				</ul>
+			</li>
+		</ul>
 	</div>
 </nav>
 <div class="container">
@@ -89,6 +100,7 @@
 		var $iFrame = $('#iframeResult').contents();
 		var $iFrameBody = $iFrame.find('body');
 		var $iFrameHead = $iFrame.find('head');
+		var outputCss = 'nested';
 
 		var SassCodeMirror = CodeMirror.fromTextArea( $('#sassCode')[0], {
 			mode : "sass",
@@ -105,6 +117,7 @@
 			styleActiveLine: true,
 			matchBrackets: true,
 			readOnly:true,
+			smartIndent:false,
 			// define Emmet output profile
     		profile: 'xhtml'
 		});
@@ -132,10 +145,10 @@
 		});
 
 		function changeSass(instance){
-			console.log('Sass -- changed');
+			//console.log('Sass -- changed');
 			$.ajax({
 				url: "/sass",
-				data: { data : SassCodeMirror.getValue() },
+				data: { data : SassCodeMirror.getValue(), style: outputCss },
 				success: function(data) {
 					CssCodeMirror.setValue(data);
 				}
@@ -143,7 +156,7 @@
 		}
 
 		function changedCss(instance){
-			console.log('Css -- received');
+			//console.log('Css -- received');
 			changeIframeStyle( instance.getValue() );
 		}
 
@@ -154,6 +167,14 @@
 		function changeIframeStyle( styles ){
 			$iFrameHead.html('<style>'+styles+'</style>');
 		}
+
+		$('.outputCss li a').click(function(evt){
+			evt.preventDefault();
+			$this = $(this);
+			$this.parents('ul').children('.active').removeClass('active');
+			$this.parent().addClass('active');
+			outputCss = $this.attr('href').replace('#','');
+		});
 
 	});
 </script>

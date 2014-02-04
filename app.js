@@ -46,6 +46,7 @@ app.get('/sass', function(req, res){
 	var sass = require('node-sass');
 	sass.render({
 		data: req.query.data,
+		outputStyle : req.query.style, 
 		includePaths: [ 'public/stylesheets/sass/' ],
 		success: function(css){
 			res.send(css);

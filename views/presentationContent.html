@@ -126,10 +126,10 @@
 
 		<section>
 			<h3>Carácterísticas de Sass</h3> 
-			<p>Sass son los mismos css de siempre pero con superpoderes</p>
+			<p><small>Sass son los mismos css de siempre pero con superpoderes</small></p>
 			<ul>
-				<li class="fragment" ><a href="/presentation#/5">Preprocessing <small>(.scss --> .css)</small></a></li>
-				<li class="fragment" ><a href="/presentation#/6">Variables</a></li>
+				<li class="fragment" >Preprocesamiento <small>(.scss --> .css)</small></li>
+				<li class="fragment" >Variables</li>
 				<li class="fragment" >Nesting <small>(Selectores enlazados)</small></li>
 				<li class="fragment" >Import <small>(importado de archivos)</small></li>
 				<li class="fragment" >Partials <small>(archivos parciales)</small></li>
@@ -140,10 +140,11 @@
 		</section>
 		
 		<section>
-			<h3>Preprocessing</h3>
+			<h3>Preprocesamiento</h3>
 			<img src="/images/preprocessing.png" style="border: none;box-shadow: none;">
 			<p></p>
-			<p>Sass se escribe en unos archivos con extension <strong>scss</strong> y sass los procesa en archivo/s <strong>css</strong> que puedes ser usados en la web</p>
+			<p><small>Sass lee los archivos con extension <strong>scss</strong> escritos en su meta-lenguaje y los procesa en archivo/s <strong>css</strong> que puedes ser usados en la web</small></p>
+			<pre><code>$ sass --watch input.scss:output.css</code></pre>
 		</section>
 		
 		<section>
@@ -498,6 +499,11 @@ width: 600px / 960px * 100%; // width: 62.5%;</code></pre>
 line-height: ceil(1.2em); // line-height: 2em;
 				</code></pre>
 			</section>
+		</section>
+		<section>
+			<h3>Framework Compass</h3>
+			<p><small>Dispone de una gran cantidad de @mixins para css3 que facilitan la creación de hojas de estilos para los navegadores modernos</small></p>
+			<code><a href="http://compass-style.org/">http://compass-style.org/</a></code>
 		</section>
 		<section>
 			<h1>That's all folks!!</h1>
