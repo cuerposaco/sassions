@@ -21,28 +21,27 @@
 	</div>
 	<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
 		<ul class="nav navbar-nav">
-			<li><a href="/presentation">Presentacion</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-				</ul>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">css Output <b class="caret"></b></a>
 				<ul class="dropdown-menu outputCss">
 					<li class="active"><a href="#nested">nested</a></li>
-					<li><a href="#expanded">expanded</a></li>
-					<li><a href="#compact">compact</a></li>
 					<li><a href="#compressed">compressed</a></li>
 				</ul>
 			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejemplos <b class="caret"></b></a>
+				<ul class="dropdown-menu examples">
+					<li><a href="#imports">Importar archivos</a></li>
+					<li><a href="#imports_medias">Importar partials</a></li>
+					<li><a href="#colors">Funciones de Colores</a></li>
+					<li><a href="#directives">Directivas de control</a></li>
+					
+				</ul>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/presentation">Presentacion</a></li>
+			<li><a href="/download">PDF</a></li>
 		</ul>
 	</div>
 </nav>
@@ -175,6 +174,46 @@
 			$this.parent().addClass('active');
 			outputCss = $this.attr('href').replace('#','');
 		});
+
+		$('.examples li a').click(function(evt){
+			evt.preventDefault();
+			$this = $(this);
+			//$this.parents('ul').children('.active').removeClass('active');
+			//$this.parent().addClass('active');
+			var command = $this.attr('href').replace('#','');
+			example()[command].call(this);
+		});
+
+		var example = function(){
+
+			function setExample(htmlCode, sassCode){
+				HTMLCodeMirror.setValue(htmlCode);
+				SassCodeMirror.setValue(sassCode);
+			}
+
+			return { 
+				imports: function(){
+					var html='<button>Click!!!</button>';
+					var scss="@import url(http://fonts.googleapis.com/css?family=Audiowide);\n @import 'partials/partial';\n button{\n font:{\n family:'Audiowide', cursive;\n size: 20px;\n }\n padding:.5em;\n }\n";
+					setExample(html, scss);
+				},
+				imports_medias: function(){
+					var html='<div class="container">\n <section>\n <article class="first">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident inventore labore veniam possimus minima impedit quidem quasi ut consequatur repellendus?</article>\n <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque odit quo harum consectetur ea eaque rem ducimus sed quaerat expedita?</article>\n <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat voluptate incidunt maxime quibusdam quasi impedit vitae reprehenderit libero magnam assumenda.</article>\n </section>\n </div>\n';
+					var scss="@import 'partials/media-queries';\n $colorContainer: #c3c3c3;\n \n .container{\n \n display:block;\n padding:1em;\n \n @include mobile-only(){\n width:100%;\n background-color:lighten($colorContainer, 10%);\n }\n @include tablet-only(){\n margin:0 auto;\n width:50%;\n background-color:$colorContainer;\n }\n @include desktop-only(){\n width:100%;\n background-color:darken($colorContainer, 20%);\n color:white;\n }\n }\n"
+					setExample(html, scss);
+				},
+				colors: function(){
+					var html = '<p class="normal">Texto con color principal</p>\n <p class="grayscale">Texto grayscale</p>\n <p class="invert">Texto color invertido</p>\n <p class="complement">Texto con color complementario</p>\n <p class="lighten">Texto iluminado</p>\n <p class="darken">Texto oscurecido</p>\n <p class="sum">Texto con suma de colores</p>\n <p class="saturate">Texto saturado</p>\n <p class="desaturate">Texto desaturado</p>\n'; 
+					var scss = '$color: olive;\n .grayscale {\n color: grayscale($color);\n }\n .invert {\n color: invert($color);\n }\n .complement {\n color: complement($color);\n }\n .normal {\n color: $color;\n }\n .lighten {\n color: lighten($color,10%);\n }\n .darken {\n color: darken($color,1%);\n }\n .sum {\n color: $color + #ff0000;\n }\n .saturate {\n color: saturate($color,100%);\n }\n .desaturate{ \n color: desaturate($color,100%);\n }\n';
+					setExample(html, scss);
+				},
+				directives: function(){
+					var html = '<ul>\n <li class="item item-nick">nick</li>\n <li class="item item-aimee">aimee</li>\n <li class="item item-dan">dan</li>\n <li class="item item-drew">drew</li>\n </ul>\n';
+					var scss = '$authors: nick aimee dan drew;\n .item {\n position: absolute;\n right: 0;\n @for $i from 1 through length($authors) {\n $author : nth($authors, $i);\n @if $author != aimee {\n &.item-#{$author} {\n top: $i * 30px;\n left: $i * 30px;\n }\n } @else {\n &.item-#{$author} {\n top: $i * 100px;\n left: $i * 100px;\n }\n }\n }\n }\n';
+					setExample(html, scss);
+				}
+			}
+		}
 
 	});
 </script>

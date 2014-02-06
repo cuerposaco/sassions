@@ -4,15 +4,17 @@
 	<!-- Any section element inside of this container is displayed as a slide -->
 	<div class="slides">
 		<section>
-			<h1>SaSSions</h1>
+			<h1>Sassions</h1>
 			<img src="/images/logo-235e394c.png" style="border: none;box-shadow: none;width: 20%;">
 			<p>Escribe menos CSS con Sass</p>
 			<code><a href="http://sass-lang.com/">http://sass-lang.com/</a></code>
 		</section>
 		<section>
-			<p>CSS es nuestra herramienta de batalla para ordenar y dar una capa visual a la web.</p>
-			<p>Pero se puede convertir en un auténtico dolor de cabeza cuando los archivos crecen mucho.</p>
-			<p>El problema más común al trabajar con css son las <strong>contínuas repeticiones de código</strong> (colores, borders, vendors,...)</p>
+			<h2>¿Por qué?</h2>
+			<small>
+				<p>CSS es nuestra herramienta de batalla para ordenar y dar una capa visual a la web; <br/>pero se puede convertir en un auténtico dolor de cabeza cuando los archivos crecen mucho.</p>
+				<p>El problema más común al trabajar con css son las <strong>contínuas repeticiones de código</strong> (colores, selectores anidados, vendors,...)</p>
+			</small>
 			<pre><code class="css">.container{
         border-color : #fabada;
                color : #fabada;
@@ -31,9 +33,10 @@
 }</code></pre>
 		</section>
 		<section>
-			<img src="/images/logo-235e394c.png" style="border: none;box-shadow: none;width: 20%;">
+			<h2>¿Por qué?</h2>
+			<img src="/images/logo-235e394c.png" style="border: none;box-shadow: none;width: 10%;">
 			<p>El mismo código</p>
-			<pre><code class="scss">$mainColor: #fabada;
+			<pre><code class="scss css">$mainColor: #fabada;
 @mixin boxSizing($val:border-box){
   -webkit-box-sixing: $val;
   -moz-box-sixing: $val;
@@ -51,10 +54,16 @@
   }
 }</code></pre>
 		</section>
-
+		<section>
+			<h2>Alternativas</h2>
+			<ul>
+				<li><a href="http://lesscss.org/">LESS</a></li>
+				<li><a href="http://learnboost.github.com/stylus/">Stylus</a></li>
+			</ul>
+		</section>
 		<section>
 			<section>
-				<h1>Instalación</h1>
+				<h2>Instalación</h2>
 				<p>Sass está desarrollado en Ruby, y generado como una gema, lo que permite su instalacion mediante el administrador de paquetes (package manager) de ruby <code>gem</code>, por tanto, para poder trabajar con sass es necesario tener instalado Ruby.</p>
 			</section>
 			<section>
@@ -82,24 +91,32 @@
 		<section>
 			<section>
 				<h3>Primeros pasos</h3>
+				<p><small>
+					Sass soporta dos formatos de escritura <strong><code>.sass</code></strong>(versión antígüa) y <strong><code>.scss</code></strong> (nos centraremos en ésta)
+				</small></p>
 				<ul>
 					<li>
-						<small>Procesar un archivo</small>
+						Procesar un archivo
 						<pre><code>$ sass input.scss output.css</code></pre>
 					</li>
 					<li>
-						<small>Escuchar los cambios de un archivo y procesarlo</small>
+						Escuchar los cambios de un archivo y procesarlo
 						<pre><code>$ sass --watch input.scss:output.css</code></pre>
 					</li>
 					<li>
-						<small>Escuchar un directorio entero y procesarlo en otro directorio</small>
+						Escuchar un directorio entero y procesarlo en otro directorio
 						<pre><code>$ sass --watch app/sass:public/stylesheets</code></pre>
+					</li>
+					<li>
+						Convertir .css a .scss
+						<pre><code>$ sass-convert style.css style.scss --from css --to scss</code></pre>
 					</li>
 				</ul>
 			</section>
 			<section>
 				<h3>Configurando la salida</h3>
 				<pre><code>$ sass input.scss output.css --style [nested|expanded|compact|compressed]</code></pre>
+				<p>&nbsp;</p>
 				<small>
 					<ul>
 						<li>
@@ -117,7 +134,7 @@
 						</li>
 						<li>
 							<p><strong>compressed</strong></p>
-							<p>Ésta opción toma la cantidad mínima depacio posible, eliminando los espacios innecesarios(los espacios entre selectoeres son necesarios) y retornos de carro.</p>
+							<p>Ésta opción toma la cantidad mínima depacio posible, eliminando los espacios innecesarios <br/>(los espacios entre selectores son necesarios) y retornos de carro.</p>
 						</li>
 					</ul>
 				</small>
@@ -136,14 +153,15 @@
 				<li class="fragment" >Mixins <small>(funciones)</small></li>
 				<li class="fragment" >Herencia <small>(Herencia de clases)</small></li>
 				<li class="fragment" >Operaciones <small>(+, -, /, * ...)</small></li>
+				<li class="fragment" >Directivas de control <small>(@if, @for, ...)</small></li>
 			</ul>
 		</section>
 		
 		<section>
-			<h3>Preprocesamiento</h3>
+			<h2>Preprocesamiento</h2>
 			<img src="/images/preprocessing.png" style="border: none;box-shadow: none;">
 			<p></p>
-			<p><small>Sass lee los archivos con extension <strong>scss</strong> escritos en su meta-lenguaje y los procesa en archivo/s <strong>css</strong> que puedes ser usados en la web</small></p>
+			<p><small>Sass lee los archivos con extension <strong>.scss</strong> escritos en su meta-lenguaje <br/>y los procesa en archivo/s <strong>.css</strong> que pueden ser usados en la web</small></p>
 			<pre><code>$ sass --watch input.scss:output.css</code></pre>
 		</section>
 		
@@ -152,7 +170,7 @@
 				<h2>Variables</h2>
 				<small>
 					<p>Almacenamos información que vamos a reutilizar a lo largo de nuestra hoja de estilos.</p>
-					<p>La declaración de variables siempre empieza con <code>$</code></p>
+					<p>La declaración de variables siempre empieza con <strong><code>$</code></strong></p>
 				</small>
 				<pre><code class="sass">$mainFont: 'Helvetica', sans;
 $mainColor: #c3c3c3;
@@ -192,12 +210,12 @@ $transparent: rgba(white, 0.5);</code></pre>
 				<ul style="display: block;">
 					<li>
 						<p>Literales</p>
-						<pre><code class="scss">$font: 'Helvetica';
+						<pre><code class="scss css">$font: 'Helvetica';
 $content: "Cargando..." </code></pre>
 					</li>
 					<li>
 						<p>Listas</p>
-						<pre><code class="scss">$colors: red, green, blue, yellow;
+						<pre><code class="scss css">$colors: red, green, blue, yellow;
 $margins: 10px 40px 0 10px; </code></pre>
 					</li>
 				</ul>
@@ -207,7 +225,7 @@ $margins: 10px 40px 0 10px; </code></pre>
 				<small>
 					<p>Las variables declaradas dentro de una declaracion <strong>(dentro de <code>{ }</code>)</strong> no pueden ser utlizadas fuera de ese bloque</p>
 				</small>
-				<pre><code class="scss">p {
+				<pre><code class="scss css">p {
   $mainFont: 'Helvetica', sans;
   font: 10px $mainFont;
 }
@@ -216,30 +234,30 @@ h1 { font: 14px $mainFont; }</code></pre><pre><code>error: unbound variable $mai
 			<section>
 				<h3>Ámbito de las variables <small>(cont.)</small></h3>
 				<small>
-					<p>Definiendo nuevos valores a variables "globales" modifica su valor para el resto de instancias</p>
+					<p>Definiendo nuevos valores a variables "globales", modificamos su valor para el resto de instancias</p>
 				</small>
-						<pre><code class="scss">$mainColor: #c3c3c3;
+						<pre><code class="scss css">$mainColor: #c3c3c3;
 
 p {
   color: $mainColor;
   $mainColor: #333;
 }
 h1 { color: $mainColor; }</code></pre>
-						<pre><code class="scss">p {color: #c3c3c3; } h1 {color: #333; }</code></pre>
+						<pre><code class="scss css">p {color: #c3c3c3; } h1 {color: #333; }</code></pre>
 			</section>
 			<section>
 				<h3>Escapando el valor de las variables</h3>
 				<small>
-					<p>Podemos escapar el valor de las variables para utilizar como <strong>selector, propiedad o literal</strong>, utilizando el formato: <code>#{$variable}</code></p>
+					<p>Podemos escapar el valor de las variables para utilizar como <strong>selector, propiedad o literal</strong><br/>utilizando el formato: <strong><code>#{$variable}</code></strong></p>
 				</small>
-				<pre><code class="scss">$top : top;
+				<pre><code class="scss css">$top : top;
 
 p {
   span-#{$top}{
     #{$top}:10px;
   }
 }</code></pre>
-				<pre><code class="scss">p span-top {top: 10px; }</code></pre>
+				<pre><code class="scss css">p span-top {top: 10px; }</code></pre>
 			</section>
 		</section>
 		
@@ -250,7 +268,7 @@ p {
 				<small>
 					<p>Podemos enlazar selectores unos dentro de otros utilizando la misma herarquía que se encuantran el los documentos HTML</p>
 				</small>
-				<pre><code class="scss">nav {
+				<pre><code class="scss css">nav {
   border-bottom: 1px solid #ff0000;
   
   ul {
@@ -273,7 +291,7 @@ p {
 				<small>
 					<p>Algunas propiedades también pueden enlazarse (font, border, padding, ...)</p>
 				</small>
-				<pre><code class="scss">p { 
+				<pre><code class="scss css">p { 
 	&.especial {
 	  font: {
 	    family: "Helvetica", sans;
@@ -294,7 +312,7 @@ p {
 				<p><code>@import url('partial/partial.css');</code></p>
 				<p>Por cada <code>@import</code>, el navegador realiza una peticón HTTP<br/>Sass importa los archivos combinándolos, sirviendo un sólo archivo CSS</p>
 			</small>
-			<pre><code class="scss">@import 'partials/partial';
+			<pre><code class="scss css">@import 'partials/partial';
 
 .container {
   margin:0 auto;
@@ -306,11 +324,13 @@ p {
 
 		<section>
 			<h2>Partials</h2>
-			<p>Podemos generar archivos parciales con pequeños trozos de código (snippets) que serán incluídos dentro de el archivo final css</p>
-			<p>Éstos archivos parciales van nombrados con un <strong>guión bajo <code>(_)</code></strong> en el nombre del archivo</p>
-			<code>_partials.css</code>
-			<pre><code class="scss">// _partials.css
+
+			<p><small>Podemos generar archivos parciales con pequeños trozos de código (snippets) que serán incluídos dentro de el archivo final css <br/>
+			Éstos archivos parciales van nombrados con un <strong>guión bajo <code>(_)</code></strong> en el nombre del archivo.</p></small>
+			<code>_partials.scss</code>
+			<pre><code class="scss css">// _partials.scss
 @import 'partials/partial';</code></pre>
+			<small><strong>Los partials no se compilan como css's</strong></small>
 		</section>
 		
 		<section>
@@ -323,7 +343,7 @@ p {
 					<li><p><strong>Llamada: </strong> <code>@include mixinName;</code></p></li>
 				</ul>
 				</small>
-				<pre><code class="scss">@mixin linkBtn {
+				<pre><code class="scss css">@mixin linkBtn {
   text: {
     decoration:none;
     transform: uppercase;
@@ -340,7 +360,7 @@ ul.mainNav {
 			</section>
 			<section>
 				<p>@mixin</p>
-				<pre><code class="scss">@mixin boxShadow{
+				<pre><code class="scss css">@mixin boxShadow{
   -webkit-box-shadow: 0px 1px 1px rgba(black, 0.3);
   -moz-box-shadow: 0px 1px 1px rgba(black, 0.3);
   -o-box-shadow: 0px 1px 1px rgba(black, 0.3);
@@ -360,7 +380,7 @@ ul.mainNav {
 			</section>
 			<section>
 				<p>@mixin (argumentos)</p>
-				<pre><code class="scss">@mixin boxShadow($ops){
+				<pre><code class="scss css">@mixin boxShadow($ops){
   -webkit-box-shadow: $ops;
   -moz-box-shadow: $ops;
   -o-box-shadow: $ops;
@@ -380,7 +400,7 @@ ul.mainNav {
 			</section>
 			<section>
 				<p>@mixin (arg1, arg2, ..., argN)</p>
-				<pre><code class="scss">@mixin boxShadow($xoffset, $yoffset, $blur, $color){
+				<pre><code class="scss css">@mixin boxShadow($xoffset, $yoffset, $blur, $color){
   -webkit-box-shadow: $xoffset $yoffset $blur $color;
   -moz-box-shadow: $xoffset $yoffset $blur $color;
   -o-box-shadow: $xoffset $yoffset $blur $color;
@@ -407,7 +427,7 @@ ul.mainNav {
 			<small>
 				<p><code>@extend .class</code></p>
 			</small>
-			<pre><code class="scss">.alert{
+			<pre><code class="scss css">.alert{
   position: absolute;
   top: 5%; left: 5%; bottom: 5%; right: 5%;
   background-color: white;
@@ -428,7 +448,7 @@ ul.mainNav {
 			<section>
 				<h2>Herencia</h2>
 				<p><strong>!! Atencion !!</strong></p>
-				<pre><code class="scss">.btn-a{
+				<pre><code class="scss css">.btn-a{
   text-transform:uppercase;
 }
 
@@ -448,7 +468,7 @@ ul.mainNav {
 				<h2>Herencia</h2>
 				<p><strong>Solución</strong></p>
 				<p>Placeholder selector (<code>%</code>) <br/><small>Puede extenderse, pero nunca actúa como un selector en sí mismo</small></p>
-				<pre><code class="scss">%btn{
+				<pre><code class="scss css">%btn{
   text-transform: lowercase;
 }
 .btn-a { @extend %btn; color: green; }
@@ -477,7 +497,7 @@ ul.mainNav {
 					<li><strong><code>%</code></strong> módulo</li>
 				</ul>
 				</small>
-				<pre><code class="scss">$family: "Helvetica " + "Neue";  // "Helvetica Neue"
+				<pre><code class="scss css">$family: "Helvetica " + "Neue";  // "Helvetica Neue"
 font-size: 10px + 4pt;  // font-size: 14px;
 width: 600px / 960px * 100%; // width: 62.5%;</code></pre>
 			</section>
@@ -495,13 +515,98 @@ width: 600px / 960px * 100%; // width: 62.5%;</code></pre>
 					<li><strong><code>percentage($number)</code></strong> - valor a porcentaje</li>
 				</ul>
 				</small>
-				<pre><code class="scss">width: percentage(350px/1000px); // width: 35%;
+				<pre><code class="scss css">width: percentage(350px/1000px); // width: 35%;
 line-height: ceil(1.2em); // line-height: 2em;
+				</code></pre>
+			</section>
+			<section>
+				<h2>Operaciones</h2>
+				<p><strong>Otras funciones predefinidas (colores)</strong></p>
+				<pre><code class="scss css">$color: #87bf64;
+.grayscale {
+  color: grayscale($color);
+}
+.invert {
+  color: invert($color);
+}
+.complement {
+  color: complement($color);
+}		
 				</code></pre>
 			</section>
 		</section>
 		<section>
+			<section>
+				<h3>Directivas de control</h3>
+				<small>
+					<ul>
+						<li>@if ... @else if ... @else</li>
+						<li>@each</li>
+						<li>@for</li>
+						<li>@while</li>
+					</ul>
+				</small>
+			</section>
+			<section>
+				<h3>Directivas de control</h3>
+				<p><small>@if ... @else if ... @else</small></p>
+				<pre><code class="scss css">$theme: pink;
+
+ header {
+   @if $theme == dark {
+     background: #000;
+   } @else if $theme == pink {
+     background: pink;
+   } @else {
+     background: #fff;
+   }
+}</code></pre>
+			</section>
+			<section>
+				<h3>Directivas de control</h3>
+				<p><small>Operadores de comparacion</small></p>
+				<small><ul>
+					<li><strong>==</strong> igual a</li>
+					<li><strong>!=</strong> no es igual / distinto</li>
+					<li><strong>></strong> mayor que</li>
+					<li><strong><</strong>menor que</li>
+					<li><strong>>=</strong> mayor ó igual que</li>
+					<li><strong><=</strong>menor ó igual que</li>
+				</ul></small>
+			</section>
+			<section>
+				<h3>Directivas de control</h3>
+				<p><small>@each</small></p>
+				<pre><code class="scss css">$authors: nick aimee dan drew;
+
+@each $author in $authors {
+  .author-#{$author} {
+    background: url(author-#{$author}.jpg);
+  }
+}</code></pre>
+			</section>
+			<section>
+				<h3>Directivas de control</h3>
+				<p> <small>@for</small> </p>
+				<pre><code class="scss css">$authors: nick aimee dan drew;
+
+.item {
+  position: absolute;
+  right: 0;
+  
+  @for $i from 1 through length($authors) {
+    $author : nth($authors, $i);
+    &.item-#{$author} {
+      top: $i * 30px;
+    }
+  }
+  
+}</code></pre>
+			</section>
+		</section>
+		<section>
 			<h3>Framework Compass</h3>
+			<img src="/images/compass_logo.png" style="border: none;box-shadow: none;width: 50%;">
 			<p><small>Dispone de una gran cantidad de @mixins para css3 que facilitan la creación de hojas de estilos para los navegadores modernos</small></p>
 			<code><a href="http://compass-style.org/">http://compass-style.org/</a></code>
 		</section>

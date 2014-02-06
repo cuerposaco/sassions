@@ -57,6 +57,10 @@ app.get('/sass', function(req, res){
 	    }
 	})
 });
+app.get('/download', function(req, res){
+  var file = __dirname + '/public/pdf/sassions.pdf';
+  res.download(file);
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
