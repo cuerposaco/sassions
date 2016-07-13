@@ -1,0 +1,26 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle">
+	</h2>
+	<h2>Primeros pasos a seguir</h2>
+	<ul>
+		<li><p>Utilizar un nombre según nomenclarura standard "a3mod_" "atresmedia_".<br>a3mod_login, atresmedia_carrusel,...</p></li>
+		<li><p>Crear el la estrucura del módulo. <a href="http://intergitlab.antena3tv.es/front/generator-backbone-module">Generador de módulos de Yeoman</a> <img src="http://yeoman.io/static/yeoman-02.83c46c7213.png" width="50px" style="vertical-align:middle;"></p></li>
+		<li>
+			<p>El nombre del módulo se utilizará para la <strong>generacion de archivos</strong>, su uso en el <strong>Window como nombre global</strong> del módulo y la <strong>carga dinámica de módulos</strong></p>
+		</li>	
+	</ul>
+	<br>
+	<pre><code class="sh">
+		# instalación de Yeoman
+		> npm install -g yo
+		# instalación de del generador de intergitlab
+		> npm install -g generator-backbone_module
+		# Creacion de carpeta del módulo -- nomenclarura de módulos [ a3mod_ | atresmedia_ ]
+		> mkdir atresmedia_Hello && cd atresmedia_Hello
+		# instalación de del generador de intergitlab
+		> yo backbone_module
+	</code></pre>
+	<br>
+	<p>¡Ya tenemos un scafolding de un módulo listo para empezar a programar!</p>
+{% endblock%}

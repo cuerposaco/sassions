@@ -1,0 +1,39 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="150px" style="vertical-align:middle">
+	</h2>
+	<p>El módulo funcionando <strong><a href="http://intergitlab.antena3tv.es/front/module-loader">"module_loader"</a></strong></p>
+	<p>probando en <strong>www-test/index.html</strong></p>
+
+	<br>
+	<pre><code class="javascript">
+		&lt;!DOCTYPE html&gt;
+		&lt;html lang=&quot;en&quot;&gt;
+		&lt;head&gt;
+		  &lt;meta charset=&quot;UTF-8&quot;&gt;
+		  &lt;title&gt;Simple Module&lt;/title&gt;
+		&lt;/head&gt;
+		&lt;body&gt; 
+		  &lt;div class=&quot;container&quot;&gt;
+		    &lt;div data-mod=&quot;atresmedia_Hello&quot;&gt;&lt;/div&gt;
+		  &lt;/div&gt;
+		  &lt;script type=&quot;text/javascript&quot; src=&quot;/public/vendors.js&quot;&gt;&lt;/script&gt;
+		  &lt;script type=&quot;text/javascript&quot; src=&quot;/build/atresmedia_Hello.js&quot;&gt;&lt;/script&gt;
+		&lt;/body&gt;
+		&lt;/html&gt;
+	</code></pre>
+	<br>
+	<ul>
+		<li>
+			<p>Incluímos el script de <strong>vendors.js</strong> y el del módulo "browserificado" <strong>atresmedia_Hello.js</strong></p>
+		</li>
+		<li>
+			<p>En los vendors se incluye el módulo <strong><a href="http://intergitlab.antena3tv.es/front/module-loader">"module_loader"</a></strong> que hace lo siguiente:</p>
+			<ul>
+				<li><p>Buscar todos los elementos con el atributo <strong>data-mod</strong> (data-mod_type en OndaCero)</p></li>
+				<li><p>Ejecuta el valor del atributo en el espacio global de nombres <strong>window["atresmedia_Hello"]</strong> pasandole como parámetros el elemento html que tiene asociado, y el evt_agr (canal pub/sub de la página)</p></li>
+				<li><p>Si no existe, hace una <strong>carga asíncrona del módulo (con <a href="https://github.com/systemjs/systemjs">SystemJS</a>)</strong>, buscando un archivo en la siguiente ruta <strong>http://[jsDomain]/modules/atresmedia_Hello.min.js</strong> y hace la misma ejecución que el método anterior en caso de que la carga del archivo sea satisfactoria</p></li>
+			</ul>
+		</li>
+	</ul>
+{% endblock%}

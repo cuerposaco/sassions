@@ -1,0 +1,8 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<p>La <strong>publicación</strong> es el mecanismo que nos permite tener nuestros módulos siempre actualizados y disponibles desde un único punto de entrada, facilitando la actualización y la automatización de los mecanismos de integración contínua, testing, ...</p>
+	<br>
+	<p class="fragment fade-in"><strong>por bower:</strong> Un site, por ejemplo www.antena3.com o www.lasexta.com, incluye requiere el desarrollo de muchos módulos y los importa mediante bower, recogiendo los archivos expuestos en la carpeta <strong>build</strong> de cada módulo</p>
+	<p class="fragment fade-in"><strong>por npm:</strong> Es posible que algún módulo requiera partes de otro en tiempo de desarrollo, y en este caso el primer módulo requeriría al segundo mediante npm</p>
+	<br>
+{% endblock%}

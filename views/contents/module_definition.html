@@ -1,0 +1,29 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>¿Qué es un módulo?</h2>
+	<p>Un módulo es un elemento de la página que tiene un comportamiento propio.</p>
+	<p>Debe tener la carácterística de que en la misma página puedan existir varios módulos del mismo tipo funcionando de forma independiente o interoperando entre ellos sin conflicto.</p>
+	<p>Deberían ser instancias únicas</p>
+	<br/>
+	<pre><code class="javascript">
+		// Ejemplo de un módulo
+		function HelloModule(opts){
+			if( !opts.el ){
+				return;
+			}
+			this.el = opts.el;
+			this.el.innerHTML = this.geeting();
+		}
+
+		HelloModule.prototype.greeting = function(){
+			return 'Hello World!!!';
+		} 
+	</code></pre>
+	<br>
+	<h4>Instanciación de un Módulo</h4>
+	<pre><code class="javascript">
+		// Instanciación de un módulo
+		var greetingNodes = document.querySelectorAll( '.greeting_module' );
+		for( var i = 0; i < greetingNodes.length; i++ ){ new HelloModule({ el: greetingNodes[i] }); }
+	</code></pre>
+{% endblock%}

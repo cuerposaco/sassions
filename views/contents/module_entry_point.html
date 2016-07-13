@@ -1,0 +1,51 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="150px" style="vertical-align:middle">
+	</h2>
+	<p>Entrada del módulo <strong>src/atresmedia_Hello.js</strong></p>
+	<br>
+	<pre><code class="javascript">
+		import MainView  from './views/MainView';
+
+		function moduleFactory(opts, pubsub){
+			
+			var MODTYPE = {
+				'default' 	: MainView
+			};
+
+			// Obtenemos los atributos datas del módulo
+			var datas = opts.el.data();
+
+			// Si viene el canal PUBSUB lo incluímos
+			if(pubsub) opts.pubsub = pubsub;
+
+			// Devolvemos la instancia
+			if(!datas.theme){ 
+				return new MODTYPE[ 'default' ](opts);
+			}
+			
+			// Si tenemos que devolver una instancia de una vista de forma dinámica
+			return ( MODTYPE[ datas.theme.toLowerCase() ]) ? 
+				new MODTYPE[ datas.theme.toLowerCase() ](opts) : 
+				new MODTYPE[ 'default' ](opts);
+		}
+
+		export default moduleFactory;
+	</code></pre>
+	<br>
+	<ul>
+		<li>
+			<p>Factoría que devuelve una vista <strong>Mainview</strong> importada desde <strong>./views/MainView</strong>, en éste proceso tanto los "requires" como los "imports" son <strong>"browserificados"</strong> incluyendolos en el archivo final.</p>
+		</li>
+		<li>
+			<p>Se suele utilizar el atributo <strong>data-theme</strong> del elemento html para gestionar distintas vistas.</p>
+		</li>
+		<li><p>La vista que se importa suele ser una vista <strong>Backbone</strong></p>, por lo que el primer argumento (opts) es siempre un objecto que backbone puede interpretar.</li>
+		<li><p>El segundo argumento (pubsub) es el canal de <strong>publicación/subscripcion</strong> que suele estar declarado en todos los sites en una etiqueta "script":s</p>
+		<pre><code class="javascript">
+		var evt_agr = _.clone(Backbone.Events);
+		</code></pre></li>
+
+	</ul>
+	
+{% endblock%}

@@ -1,0 +1,44 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="150px" style="vertical-align:middle">
+	</h2>
+	<p>Vista <strong>src/views/MainView.js</strong></p>
+	<br>
+	<pre><code class="javascript">
+		// Custom filters
+		var nunjucks = require( 'nunjucks' );
+		nunjucks.env = new nunjucks.Environment();
+		nunjucks.env.addFilter( 'test', function( test, text ) {
+		    return test + (text || ' (Nunjucks Test Filter)');
+		});
+
+		var MainView = Backbone.View.extend({
+			template 	: require('../templates/MainTemplate.nunj'),
+			pubsub 		: _.extend({}, Backbone.Events),
+
+			initialize: function(opts){
+				if(opts){ _.extend(this, opts); }
+				this.render();
+			},
+
+			render: function(data){
+				this.$el.html( this.template.render() );
+				return this;
+			}
+		});
+
+		export default MainView;
+	</code></pre>
+	<br>
+	<ul>
+		<li>
+			<p>Es un módulo que expone la vista de Backbone <strong>MainView</strong></p>
+		</li>
+		<li>
+			<p>La propiedad "template" require la plantilla de nunjucks, que luego browserify sabe interpretar gracias al transformador de "nunjucksify"</p>
+		</li>
+		<li>
+			<p>Finalmente renderiza el contenido de la plantilla en el interior del módulo mediante el método render de la vista</p>
+		</li>
+	</ul>
+{% endblock%}

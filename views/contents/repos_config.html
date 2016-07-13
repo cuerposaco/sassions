@@ -1,0 +1,22 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<div>
+		<img src="https://docs.npmjs.com/images/npm.svg" width="100px" style="vertical-align: middle;">
+		<img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="100px" style="vertical-align: middle;">
+	</div>
+	<p>Los módulos se publican para ser consumidos por bower y npm.</p>
+	<p>Para ello en <strong>i3Television</strong> dispone de un repositorio privado de paquetes npm <a href="http://intersinopia:4873/">Sinopia</a> y un repositorio privado de paquestes de bower <a href="http://intersinopia:5678/">Private Bower</a></p>
+	<br/>
+	<p>Necesitamos configurar tanto <strong>npm</strong> como <strong>bower</strong> para que busquen en esos repositorios los módulos que posteriormente vayamos a consumir</p>
+	<br/>
+	<h4>Configurar npm</h4>
+	<pre><code> 
+	npm set registry http://intersinopia:4873
+	npm adduser --registry http://intersinopia:4873
+	</code></pre>
+	<br/>
+	<h4>Configurar bower</h4>
+	<pre><code class="json">
+	{"registry": "http://intersinopia:5678","timeout": 300000}
+	</code></pre>
+{% endblock%}

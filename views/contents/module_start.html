@@ -1,0 +1,13 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="150px" style="vertical-align:middle">
+	</h2>
+	<pre><code class="sh">
+		> grunt server
+	</code></pre>
+	<br>
+	<p>Este proceso inicia <strong>bower</strong>, <strong>browserify</strong>, genera los archivos del módulo en la carpeta <strong>/build</strong> y lanza un servidor de pruebas que se encuentra en la carpeta <strong>www-test</strong> en el puerto <a href="http://localhost:3000/">http://localhost:3000/</a></p>
+	<p>Cualquier cambio en el proyecto fuerza la recarga de la página gracias a <strong>livereload</strong> que se encuentra incluida en la tarea de <strong>Grunt</strong></p>
+	<br>
+	<p>Si todo ha salido bien, deberíamos de ver el resultado de la plantilla en el/los elementos cuyo atributo sea <strong>data-mod="atresmedia_Hello"</strong></p>
+{% endblock%}

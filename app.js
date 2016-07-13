@@ -10,9 +10,10 @@ var http = require('http');
 var path = require('path');
 
 var app = express();
-var swig = require('swig');
+//var swig = require('swig');
+var nunjucks = require('nunjucks');
 
-app.engine('html', swig.renderFile);
+//app.engine('html', swig.renderFile);
 // all environments
 app.set('port', process.env.PORT || 1333);
 app.set('views', path.join(__dirname, 'views'));
@@ -25,11 +26,12 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Swig will cache templates for you, but you can disable
-// that and use Express's caching instead, if you like:
-app.set('view cache', true);
-// To disable Swig's cache, do the following:
-//swig.setDefaults({ cache: false });
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app,
+    noCache : true
+});
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -37,26 +39,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req, res){
-	res.render('index', {title:'sassions'});
+	res.render('index', { title:'Atresmedia Modules'});
 });
-app.get('/presentation', function(req, res){
-	res.render('presentationContent', {title:'sassions'});
-});
-app.get('/sass', function(req, res){
-	var sass = require('node-sass');
-	sass.render({
-		data: req.query.data,
-		outputStyle : req.query.style, 
-		includePaths: [ 'public/stylesheets/sass/' ],
-		success: function(css){
-			res.send(css);
-		},
-		error: function(error) {
-	        //console.log(error);
-	        res.send(400, error);
-	    }
-	})
-});
+
 app.get('/download', function(req, res){
   var file = __dirname + '/public/pdf/sassions.pdf';
   res.download(file);

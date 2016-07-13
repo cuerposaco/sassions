@@ -1,220 +1,57 @@
-{% extends 'layout.html' %}
+{% extends 'presentationLayout.html' %}
 
-{% block styles %}
-{% parent %}
-<link rel="stylesheet" href="/vendor/codemirror/lib/codemirror.css">
-<link rel="stylesheet" href="/stylesheets/style.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-{% endblock %}
-
-{% block body %}
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<!-- Brand and toggle get grouped for better mobile display -->
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="#">:: Sassions playground ::</a>
-	</div>
-	<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
-		<ul class="nav navbar-nav">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">css Output <b class="caret"></b></a>
-				<ul class="dropdown-menu outputCss">
-					<li class="active"><a href="#nested">nested</a></li>
-					<li><a href="#compressed">compressed</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejemplos <b class="caret"></b></a>
-				<ul class="dropdown-menu examples">
-					<li><a href="#imports">Importar archivos</a></li>
-					<li><a href="#imports_medias">Importar partials</a></li>
-					<li><a href="#colors">Funciones de Colores</a></li>
-					<li><a href="#directives">Directivas de control</a></li>
-					
-				</ul>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/presentation">Presentacion</a></li>
-			<li><a href="/download">PDF</a></li>
-		</ul>
-	</div>
-</nav>
-<div class="container">
-	<div class="row">
-		<div class="resizeme col-md-4">
-			<div class="HtmlPanel panel panel-primary">
-				<!-- Default panel contents -->
-				<div class="panel-heading">Resultado</div>
-				<div class="panel-body">
-					<iframe src="" id="iframeResult" frameborder="0"></iframe>
-				</div>
-				<div class="panel-body">
-					<textarea name="htmlCode" id="htmlCode" class="col-md-12"></textarea>
-				</div>
-			</div>
+{% block presentationContent %}
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+	<!-- 
+		- intro
+		- Que es un módulo?
+		- Modulo Simple
+		- Yeoman de creacion de módulos i3TV
+		- Estructura del módulo
+			- Backbone
+			- Nunjucks (Platillas)
+			- grunt
+			- browserify
+			- copy-cdn
+			- ciclo de vida
+		- publicacion del Módulo
+			- git (intergitlab)
+			- sinopia\private bower
+		- Sites
+		- Que es un Site?
+	-->
+		{% include 'contents/splash.html' %}
+		{% include 'contents/module_definition.html' %}
+		<section>
+			<h1>Mi primer Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+		</section>
+		{% include 'contents/module_yeoman.html' %}
+		{% include 'contents/module_structure.html' %}
+		{% include 'contents/module_entry_point.html' %}
+		{% include 'contents/module_mainView.html' %}
+		{% include 'contents/module_loader.html' %}
+		<section>
+			<h1>Probando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+		</section>
+		{% include 'contents/module_start.html' %}
+		<section>
+			<h1>Publicando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+		</section>
+		<section>
+			<h1>Publicando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+			<h2>Configuracion de <strong>npm</strong> y <strong>bower</strong></h2>
+			<div>
+			<img src="https://docs.npmjs.com/images/npm.svg" width="100px" style="vertical-align: middle;">
+			<img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="100px" style="vertical-align: middle;">
 		</div>
-		<div class="resizemeCon col-md-4">
-			<div class="SassPanel panel panel-primary">
-				<!-- Default panel contents -->
-				<div class="panel-heading">Sass Code <span class="label label-primary">updating...</span></div>
-				<div class="panel-body">
-					<textarea name="sassCode" id="sassCode" class="col-md-12"></textarea>
-				</div>
-			</div>
-		</div>
-		<div class="resizemeCon col-md-4">
-			<div class="CssPanel panel panel-info">
-				<!-- Default panel contents -->
-				<div class="panel-heading">Css Code</div>
-				<div class="panel-body">
-					<textarea name="cssCode" id="cssCode" class="col-md-12"></textarea>
-				</div>
-			</div>
-			
-		</div>
+		</section>
+		{% include 'contents/repos_config.html' %}
+		{% include 'contents/repos_publish.html' %}
+		{% include 'contents/repos_publish2.html' %}
+		<section>
+			<h1>Resumen del ciclo de vida <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+		</section>
+		{% include 'contents/module_life_cicle.html' %}
 	</div>
-</div>
-{% endblock %}
-
-{% block scripts %}
-{% parent %}
-<script src="/vendor/codemirror/lib/codemirror.js"></script>
-<script src="/vendor/codemirror/mode/javascript/javascript.js"></script>
-<script src="/vendor/codemirror/mode/sass/sass.js"></script>
-<script src="/vendor/codemirror/mode/css/css.js"></script>
-<script src="/vendor/codemirror/mode/xml/xml.js"></script>
-<script src="/vendor/codemirror-emmet/emmet.min.js"></script>
-<script src="/vendor/lodash/dist/lodash.min.js"></script>
-<script src="/vendor/sass-bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script>
-	$(function(){
-		var $sassPanel = $('#SassPanel');
-		var $iFrame = $('#iframeResult').contents();
-		var $iFrameBody = $iFrame.find('body');
-		var $iFrameHead = $iFrame.find('head');
-		var outputCss = 'nested';
-
-		var SassCodeMirror = CodeMirror.fromTextArea( $('#sassCode')[0], {
-			mode : "sass",
-			lineNumbers: true,
-			styleActiveLine: true,
-			matchBrackets: true,
-			smartIndent:false,
-			// define Emmet output profile
-    		profile: 'xhtml'
-		});
-		var CssCodeMirror = CodeMirror.fromTextArea( $('#cssCode')[0], {
-			mode : "css",
-			lineNumbers: true,
-			styleActiveLine: true,
-			matchBrackets: true,
-			readOnly:true,
-			smartIndent:false,
-			// define Emmet output profile
-    		profile: 'xhtml'
-		});
-
-		var HTMLCodeMirror = CodeMirror.fromTextArea( $('#htmlCode')[0], {
-			mode : "xml",
-    		htmlMode: true,
-			lineNumbers: true,
-			styleActiveLine: true,
-			matchBrackets: true,
-			// define Emmet output profile
-    		profile: 'xhtml'
-		});
-
-		SassCodeMirror.on("change", _.debounce(changeSass, 500));
-		CssCodeMirror.on("change", _.debounce(changedCss, 100));
-		HTMLCodeMirror.on("change", _.debounce(changeIframeContent, 100));
-
-		$('.resizeme').resizable({ 
-			handles: "e, w"
-		});
-		$('.resizemeCon').resizable({
-			handles: "e, w", 
-			alsoResize: ".resizemeCon"
-		});
-
-		function changeSass(instance){
-			//console.log('Sass -- changed');
-			$.ajax({
-				url: "/sass",
-				data: { data : SassCodeMirror.getValue(), style: outputCss },
-				success: function(data) {
-					CssCodeMirror.setValue(data);
-				}
-			});
-		}
-
-		function changedCss(instance){
-			//console.log('Css -- received');
-			changeIframeStyle( instance.getValue() );
-		}
-
-		function changeIframeContent(instance){
-			$iFrameBody.html(instance.getValue());
-		}
-
-		function changeIframeStyle( styles ){
-			$iFrameHead.html('<style>'+styles+'</style>');
-		}
-
-		$('.outputCss li a').click(function(evt){
-			evt.preventDefault();
-			$this = $(this);
-			$this.parents('ul').children('.active').removeClass('active');
-			$this.parent().addClass('active');
-			outputCss = $this.attr('href').replace('#','');
-		});
-
-		$('.examples li a').click(function(evt){
-			evt.preventDefault();
-			$this = $(this);
-			//$this.parents('ul').children('.active').removeClass('active');
-			//$this.parent().addClass('active');
-			var command = $this.attr('href').replace('#','');
-			example()[command].call(this);
-		});
-
-		var example = function(){
-
-			function setExample(htmlCode, sassCode){
-				HTMLCodeMirror.setValue(htmlCode);
-				SassCodeMirror.setValue(sassCode);
-			}
-
-			return { 
-				imports: function(){
-					var html='<button>Click!!!</button>';
-					var scss="@import url(http://fonts.googleapis.com/css?family=Audiowide);\n @import 'partials/partial';\n button{\n font:{\n family:'Audiowide', cursive;\n size: 20px;\n }\n padding:.5em;\n }\n";
-					setExample(html, scss);
-				},
-				imports_medias: function(){
-					var html='<div class="container">\n <section>\n <article class="first">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident inventore labore veniam possimus minima impedit quidem quasi ut consequatur repellendus?</article>\n <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque odit quo harum consectetur ea eaque rem ducimus sed quaerat expedita?</article>\n <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat voluptate incidunt maxime quibusdam quasi impedit vitae reprehenderit libero magnam assumenda.</article>\n </section>\n </div>\n';
-					var scss="@import 'partials/media-queries';\n $colorContainer: #c3c3c3;\n \n .container{\n \n display:block;\n padding:1em;\n \n @include mobile-only(){\n width:100%;\n background-color:lighten($colorContainer, 10%);\n }\n @include tablet-only(){\n margin:0 auto;\n width:50%;\n background-color:$colorContainer;\n }\n @include desktop-only(){\n width:100%;\n background-color:darken($colorContainer, 20%);\n color:white;\n }\n }\n"
-					setExample(html, scss);
-				},
-				colors: function(){
-					var html = '<p class="normal">Texto con color principal</p>\n <p class="grayscale">Texto grayscale</p>\n <p class="invert">Texto color invertido</p>\n <p class="complement">Texto con color complementario</p>\n <p class="lighten">Texto iluminado</p>\n <p class="darken">Texto oscurecido</p>\n <p class="sum">Texto con suma de colores</p>\n <p class="saturate">Texto saturado</p>\n <p class="desaturate">Texto desaturado</p>\n'; 
-					var scss = '$color: olive;\n .grayscale {\n color: grayscale($color);\n }\n .invert {\n color: invert($color);\n }\n .complement {\n color: complement($color);\n }\n .normal {\n color: $color;\n }\n .lighten {\n color: lighten($color,10%);\n }\n .darken {\n color: darken($color,1%);\n }\n .sum {\n color: $color + #ff0000;\n }\n .saturate {\n color: saturate($color,100%);\n }\n .desaturate{ \n color: desaturate($color,100%);\n }\n';
-					setExample(html, scss);
-				},
-				directives: function(){
-					var html = '<ul>\n <li class="item item-nick">nick</li>\n <li class="item item-aimee">aimee</li>\n <li class="item item-dan">dan</li>\n <li class="item item-drew">drew</li>\n </ul>\n';
-					var scss = '$authors: nick aimee dan drew;\n .item {\n position: absolute;\n right: 0;\n @for $i from 1 through length($authors) {\n $author : nth($authors, $i);\n @if $author != aimee {\n &.item-#{$author} {\n top: $i * 30px;\n left: $i * 30px;\n }\n } @else {\n &.item-#{$author} {\n top: $i * 100px;\n left: $i * 100px;\n }\n }\n }\n }\n';
-					setExample(html, scss);
-				}
-			}
-		}
-
-	});
-</script>
 {% endblock %}

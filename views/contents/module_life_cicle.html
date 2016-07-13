@@ -1,0 +1,41 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle">
+	</h2>
+	<p>Resumiendo el clico de vida de un módulo</p>
+	<ul>
+		<li>
+			<p>Creación</p>
+			<ul>
+				<li>
+					<p>Scafolding de Yeoman</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Desarrollo</p>
+			<ul>
+				<li><p>Browserify</p></li>
+				<li><p>Babel</p></li>
+				<li><p>Nunjucks</p></li>
+			</ul>
+		</li>
+		<li>
+			<p>Publicacion</p>
+			<ul>
+				<li>
+					<p>Subida de version en NPM(Sinopia) y publicación</p>
+					<pre><code class="sh">> npm version patch && npm publish </code></pre>
+				</li>
+				<li>
+					<p>Registrar módulo en Bower(Private bower), si no estuviera registrado</p>
+					<pre><code class="sh">> bower register [nombre del módulo] [http://repositorio_GIT] </code></pre>
+				</li>
+				<li>
+					<p>Subir tageado en GIT(Gitlab) siguiendo los tags del package.json</p>
+					<pre><code class="sh">> git push --follow-tags</code></pre>
+				</li>
+			</ul>
+		</li>
+	</ul>
+{% endblock%}

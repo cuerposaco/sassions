@@ -1,15 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block styles %}
-<link rel="stylesheet" href="/vendor/revealjs/css/reveal.min.css">
-<link rel="stylesheet" href="/vendor/revealjs/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="/vendor/reveal.js/css/reveal.css">
+<link rel="stylesheet" href="/stylesheets/theme.css" id="theme">
 
 <!-- For syntax highlighting -->
-<link rel="stylesheet" href="/vendor/revealjs/lib/css/zenburn.css">
+<link rel="stylesheet" href="/vendor/reveal.js/lib/css/zenburn.css">
 
 <!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
-	document.write( '<link rel="stylesheet" href="/vendor/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	document.write( '<link rel="stylesheet" href="/vendor/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
 
 <!--[if lt IE 9]>
@@ -24,9 +24,9 @@
 {% endblock %}
 
 {% block scripts %}
-	{% parent %}
-	<script src="/vendor/revealjs/lib/js/head.min.js"></script>
-	<script src="/vendor/revealjs/js/reveal.min.js"></script>
+	{{ super() }}
+	<script src="/vendor/reveal.js/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js/js/reveal.js"></script>
 	<script>
 		$(function(){
 			// Full list of configuration options available here:
@@ -46,12 +46,12 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'vendor/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'vendor/revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'vendor/revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'vendor/revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'vendor/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'vendor/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'vendor/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'vendor/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'vendor/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'vendor/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'vendor/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'vendor/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 		});
