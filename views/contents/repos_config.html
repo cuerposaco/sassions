@@ -5,16 +5,20 @@
 		<img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="100px" style="vertical-align: middle;">
 	</div>
 	<br/>
+	<!--
 	<p>Necesitamos configurar tanto <strong>sinopia</strong> como <strong>private bower</strong> tanto para publicar nuestros módulos, como para consumirlos.</p>
 	<br/>
-	<h4>Configurar Sinopia</h4>
+	-->
+	<h4>Configurar <a href="http://intersinopia:4873">Sinopia</a></h4>
 	<pre><code> 
 	npm set registry http://intersinopia:4873
 	npm adduser --registry http://intersinopia:4873
 	</code></pre>
 	<br/>
-	<h4>Configurar Private Bower</h4>
+	<h4>Configurar <a href="http://intersinopia:5678">Private Bower</a></h4>
 	<pre><code class="json">
 	{"registry": "http://intersinopia:5678","timeout": 300000}
 	</code></pre>
+	<br>
+	<p>Ya podemos publicar y consumir nuestros propios módulos</p>
 {% endblock%}

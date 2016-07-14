@@ -22,33 +22,34 @@
 		- Que es un Site?
 	-->
 		{% include 'contents/splash.html' %}
-		<section>
+		<section data-background-color="#b04304">
 			<h1>Modularizando la Web</h1>
 		</section>
 		{% include 'contents/module_history.html' %}
-		<section>
+		<section data-background-color="#b04304">
 			<h1>Spaghetti Module Code</h1>
 			<p>Aquí no hay quien meta la mano</p>
 		</section>
 		{% include 'contents/module_definitions.html' %}
-		<section>
+		<section data-background-color="#b04304">
 			<h1>Cómo lo estamos haciendo en <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 			<p>Si puedes hacerlo mejor, ...HAZLO!!!</p>
 		</section>
 		{% include 'contents/module_structure.html' %}
-		<section>
+		<section data-background-color="#b04304">
 			<h1>Mi primer Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 		</section>
 		{#% include 'contents/module_definition.html' %#}
 		{% include 'contents/module_yeoman.html' %}
+		{% include 'contents/module_gruntFile.html' %}
 		{% include 'contents/module_entry_point.html' %}
 		{% include 'contents/module_mainView.html' %}
 		{% include 'contents/module_loader.html' %}
-		<section>
+		<section data-background-color="#b04304">
 			<h1>Probando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 		</section>
 		{% include 'contents/module_start.html' %}
-		<section>
+		<section data-background-color="#b04304">
 			<h1>Publicando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 		</section>
 		{% include 'contents/repos_publish.html' %}
@@ -60,10 +61,29 @@
 		</div>
 		</section>
 		{% include 'contents/repos_config.html' %}
-		{% include 'contents/repos_publish2.html' %}
 		<section>
-			<h1>Resumen del ciclo de vida <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+			<h2>Publicando</h2>
+			<div>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="40px" style="vertical-align: middle;"alt="">
+				+
+				<img src="https://docs.npmjs.com/images/npm.svg" width="50px" style="vertical-align: middle;">
+				+
+				<img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="50px" style="vertical-align: middle;">
+			</div>
+		</section>
+		{% include 'contents/repos_publish2.html' %}
+		{% include 'contents/repos_publish2_1.html' %}
+		<section data-background-color="#b04304">
+			<h1>Resumiendo el ciclo de vida de un Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 		</section>
 		{% include 'contents/module_life_cicle.html' %}
+		<section>
+			<h1>JAM TIME</h1>
+			<p>Ruegos, preguntas, súplicas, whatever...</p>
+		</section>
+		<section>
+			<h1>See you later...</h1>
+			<p><img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></p>
+		</section>
 	</div>
 {% endblock %}

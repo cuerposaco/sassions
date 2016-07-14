@@ -8,8 +8,12 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #111111;
-  background-color: #111111; }
+  background-color: #111111; 
+}
+ .reveal .slide-background{
+
+  background-color: #111111; 
+ }
 
 .reveal {
   font-family: "Roboto", sans-serif;
@@ -69,6 +73,10 @@ body {
 
 .reveal li pre {
     margin: 0.5em 0;
+}
+
+.reveal li li>p {
+    font-size: 0.8em !important;
 }
 /*********************************************
  * LINKS

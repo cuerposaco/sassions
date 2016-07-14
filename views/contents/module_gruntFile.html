@@ -1,0 +1,18 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Desmontando <strong>Gruntfile</strong><img src="http://gruntjs.com/img/grunt-logo.svg" width="50px" style="vertical-align:middle" alt=""></h2>
+	<br>
+	<p>Desde el Gruntfile.js vamos a controlar todo el proceso de creación del módulo y su generación en un módulo consumible</p>
+	<br>
+	<ul>
+		<li><p><strong>pkg</strong> el package.json (El archivo madre)</p></li>
+		<li><p><strong>config</strong> Configuracion de variables (nombres de carpetasd de publicacion, test, y sources, puestos de connect,...)</p></li>
+		<li><p><strong>jshint</strong> Control de calidad del código</p></li>
+		<li><p><strong>bower</strong> Lanza la descarga de dependencias por bower</p></li>
+		<li><p><strong>browserify</strong> Desde el punto de entrada de nuestra aplicacion construye un archivo listo para usarse en el navegador y lo pone en la carpeta "build".</p><p><i>Parte de la configuracion se encuentra en el <strong>package.json</strong></i></p></li>
+		<li><p><strong>uglify</strong> Minimificado del archivo generado por "browserify" en la carpeta "build"</p></li>
+		<li><p><strong>concat</strong> Concatenado de archivos de vendors, para probar en desarrollo</p></li>
+		<li><p><strong>connect</strong> Lanza un servidor de pruebas arrancando en la carpeta "www-test", expone toda la jerarquia como si fuese la raiz</p></li>
+		<li><p><strong>watch</strong> Escuchamos cambios en los archivos y lanzamos el livereload cuando hay cambios</p></li>
+	</ul>
+{% endblock%}

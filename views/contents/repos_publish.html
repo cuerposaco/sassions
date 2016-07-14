@@ -1,9 +1,9 @@
 {% extends 'slidesTemplates/sectionLayout.html' %}
 {% block slide %}
 
-	<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="80px" style="vertical-align: middle;"alt=""><br><strong>Gitlab:</strong> Es el lugar donde llevaremos el control de versiones y "tagearemos" el proyecto sincronizandolo con la version del modulo</p>
+	<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="80px" style="vertical-align: middle;"alt=""><br><strong><a href="http://intergitlab.antena3tv.es/">Gitlab</a>:</strong> Es el lugar donde llevaremos el control de versiones y "tagearemos" el proyecto sincronizandolo con la version del modulo</p>
 	
-	<p class="fragment fade-in"><img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="100px" style="vertical-align: middle;"><br><strong><a href="http://intersinopia:5678/">Private Bower</a>:</strong> Repositorio de paquetes de Bower. Hace de proxy contra el gitlab para buscar las versiones del módulo.<br>Un site, por ejemplo www.antena3.com, incluye muchos módulos y los importamos mediante bower, recogiendo los archivos que exponemos en la carpeta <strong>build</strong> de cada módulo</p><br>
+	<p class="fragment fade-in"><img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="100px" style="vertical-align: middle;"><br><strong><a href="http://intersinopia:5678/">Private Bower</a>:</strong> Repositorio de paquetes de Bower.<br>Hace de proxy contra el gitlab para buscar las versiones del módulo.<br>Un site, por ejemplo www.antena3.com, incluye muchos módulos y los importamos mediante bower, recogiendo los archivos que exponemos en la carpeta <strong>build</strong> de cada módulo</p><br>
 	
 	<p class="fragment fade-in"><img src="https://docs.npmjs.com/images/npm.svg" width="100px" style="vertical-align: middle;"><br><strong><a href="http://intersinopia:4873/">Sinopia</a>:</strong> Repositorio de paquetes de node. <br/>Siempre que queramos utilizar algúna funcionalidad o plantilla de otro módulo en tiempo de desarrollo.</p>
 {% endblock%}

@@ -1,38 +1,52 @@
 {% extends 'slidesTemplates/sectionLayout.html' %}
 {% block slide %}
-	<h2>Modulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle">
-	</h2>
-	<p>Resumiendo el clico de vida de un módulo</p>
 	<ul>
 		<li>
 			<p>Creación</p>
 			<ul>
+				<li><p><img src="http://yeoman.io/static/yeoman-02.83c46c7213.png" width="30px" style="vertical-align:middle;"> Scafolding de Yeoman</p></li>
+			</ul>
+		</li>
+		<li class="fragment fade-in">
+			<p>Desarrollo</p>
+			<ul>
 				<li>
-					<p>Scafolding de Yeoman</p>
+					<img src="http://gruntjs.com/img/grunt-logo.svg" width="50px" style="vertical-align:middle" alt=""> +
+					<img src="https://babeljs.io/images/logo.svg" width="50px" alt="" style="vertical-align:middle; background-color:#f5da55;"> + 
+					<img src="http://browserify.org/images/wizard_hat_blue.png" width="50px" alt="" style="vertical-align:middle;">
 				</li>
 			</ul>
 		</li>
-		<li>
-			<p>Desarrollo</p>
-			<ul>
-				<li><p>Browserify</p></li>
-				<li><p>Babel</p></li>
-				<li><p>Nunjucks</p></li>
-			</ul>
-		</li>
-		<li>
+		<li class="fragment fade-in">
 			<p>Publicacion</p>
 			<ul>
 				<li>
-					<p>Subida de version en NPM(Sinopia) y publicación</p>
+					<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="22px" style="vertical-align: middle;"alt=""> Crear repositorio en GITLAB y hacer la primera subida</p>
+					<pre><code class="sh">> git push --follow-tags</code></pre>
+				</li>
+				<li>
+					<p><img src="https://docs.npmjs.com/images/npm.svg" width="50px" style="vertical-align: middle;"> Versionado y publicación en Sinopia</p>
 					<pre><code class="sh">> npm version patch && npm publish </code></pre>
 				</li>
 				<li>
-					<p>Registrar módulo en Bower(Private bower), si no estuviera registrado</p>
+					<p><img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="32px" style="vertical-align: middle;">Registrar el módulo en Private bower</p>
 					<pre><code class="sh">> bower register [nombre del módulo] [http://repositorio_GIT] </code></pre>
 				</li>
 				<li>
-					<p>Subir tageado en GIT(Gitlab) siguiendo los tags del package.json</p>
+					<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="22px" style="vertical-align: middle;"alt=""> Subir tageado en Gitlab siguiendo los tags del package.json</p>
+					<pre><code class="sh">> git push --follow-tags</code></pre>
+				</li>
+			</ul>
+		</li>
+		<li class="fragment fade-in">
+			<p>Actualización/Nuevas funcionalidades</p>
+			<ul>
+				<li>
+					<p><img src="https://docs.npmjs.com/images/npm.svg" width="50px" style="vertical-align: middle;"> Versionado y publicación en Sinopia</p>
+					<pre><code class="sh">> npm version patch && npm publish </code></pre>
+				</li>
+				<li>
+					<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="22px" style="vertical-align: middle;"alt=""> Subir tageado en Gitlab siguiendo los tags del package.json</p>
 					<pre><code class="sh">> git push --follow-tags</code></pre>
 				</li>
 			</ul>

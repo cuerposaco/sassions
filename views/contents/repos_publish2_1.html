@@ -1,0 +1,18 @@
+{% extends 'slidesTemplates/sectionLayout.html' %}
+{% block slide %}
+	<h2>Modificando un módulo ya creado y dado de alta en <img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="50px" style="vertical-align: middle;">Private Bower</h2>
+	<br>
+	<div class="fragment fade-in">
+		<h4>2. Publicar en Sinopia actualizando version <img src="https://docs.npmjs.com/images/npm.svg" width="50px" style="vertical-align: middle;"></h4>
+		<pre><code class="bash"> 
+		> npm version [ patch | minor | release]
+		> npm publish
+		</code></pre>
+	</div><br>
+	<div class="fragment fade-in">
+		<h4>4. Subir los cambios y el nuevo tag al GITLAB <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="40px" style="vertical-align: middle;"alt=""></h4>
+		<pre><code class="bash">
+		> git push --follow-tags
+		</code></pre>
+	</div>
+{% endblock%}
