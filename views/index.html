@@ -22,12 +22,25 @@
 		- Que es un Site?
 	-->
 		{% include 'contents/splash.html' %}
-		{% include 'contents/module_definition.html' %}
+		<section>
+			<h1>Modularizando la Web</h1>
+		</section>
+		{% include 'contents/module_history.html' %}
+		<section>
+			<h1>Spaghetti Module Code</h1>
+			<p>Aquí no hay quien meta la mano</p>
+		</section>
+		{% include 'contents/module_definitions.html' %}
+		<section>
+			<h1>Cómo lo estamos haciendo en <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
+			<p>Si puedes hacerlo mejor, ...HAZLO!!!</p>
+		</section>
+		{% include 'contents/module_structure.html' %}
 		<section>
 			<h1>Mi primer Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 		</section>
+		{#% include 'contents/module_definition.html' %#}
 		{% include 'contents/module_yeoman.html' %}
-		{% include 'contents/module_structure.html' %}
 		{% include 'contents/module_entry_point.html' %}
 		{% include 'contents/module_mainView.html' %}
 		{% include 'contents/module_loader.html' %}
@@ -38,16 +51,15 @@
 		<section>
 			<h1>Publicando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
 		</section>
+		{% include 'contents/repos_publish.html' %}
 		<section>
-			<h1>Publicando el Módulo <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>
-			<h2>Configuracion de <strong>npm</strong> y <strong>bower</strong></h2>
+			<h2>Configurando <strong>npm</strong> y <strong>bower</strong></h2>
 			<div>
 			<img src="https://docs.npmjs.com/images/npm.svg" width="100px" style="vertical-align: middle;">
 			<img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="100px" style="vertical-align: middle;">
 		</div>
 		</section>
 		{% include 'contents/repos_config.html' %}
-		{% include 'contents/repos_publish.html' %}
 		{% include 'contents/repos_publish2.html' %}
 		<section>
 			<h1>Resumen del ciclo de vida <img src="http://www.antena3.com/public/img/grupo-atresmedia.svg" width="200px" style="vertical-align:middle"></h1>

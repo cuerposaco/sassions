@@ -1,8 +1,7 @@
 {% extends 'slidesTemplates/sectionLayout.html' %}
 {% block slide %}
 	<div>
-		<h4>1. Subir el proyecto al repositiorio GIT</h4>
-		<p>El repositorio debe estar creado previamente</p>	
+		<h4>1. Hacer la primera subida al GITLAB <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="40px" style="vertical-align: middle;"alt=""></h4>
 		<pre><code class="bash"> 
 		> git init
 		> git remote add origin [git://url_repositorio_git.git]
@@ -10,26 +9,24 @@
 		> git commit -am "Release"
 		> git push -u origin master
 		</code></pre>	
-	</div>
+	</div><br>
 	<div class="fragment fade-in">
-		<h4>2. Publicar en npm [Sinopia] versionando el modulo<img src="https://docs.npmjs.com/images/npm.svg" width="50px" style="vertical-align: middle;"></h4>
+		<h4>2. Publicar en Sinopia actualizando version <img src="https://docs.npmjs.com/images/npm.svg" width="50px" style="vertical-align: middle;"></h4>
 		<pre><code class="bash"> 
 		> npm version [ patch | minor | release]
 		> npm publish
 		</code></pre>
-	</div>
+	</div><br>
 	<div class="fragment fade-in">
 		<h4>3. Publicar en bower [Private Bower] <img src="https://raw.githubusercontent.com/Hacklone/private-bower/master/site/logo.png" width="50px" style="vertical-align: middle;"></h4>
 		<pre><code class="bash">
 		> bower register [nombre_del_modulo] [http://url_repositorio_git]
 		</code></pre>
-		<p>private bower actúa como un proxy contra el repositorio git, recogiendo los tags de su repositorio</p>
-	</div>
+	</div><br>
 	<div class="fragment fade-in">
-		<h4>3. Subir los cambios y tagear la nueva version en el repositorio GIT</h4>
+		<h4>4. Subir los cambios y el nuevo tag al GITLAB <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png" width="40px" style="vertical-align: middle;"alt=""></h4>
 		<pre><code class="bash">
 		> git push --follow-tags
 		</code></pre>
-		<p>éste comando recoge la version del <strong>package.json</strong> usado por <strong>npm</strong> y la utiliza para tagear el commit</p>
 	</div>
 {% endblock%}

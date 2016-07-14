@@ -1,0 +1,43 @@
+<section>
+	<h2>WTF!!</h2>
+	<pre><code class="javascript">
+	$(function(){
+		// Módulo que hace una peticion Ajax cada 20 segundos y actualiza contenido
+		function creaModulo(){
+			var $modulo = $('.miModulo');
+			setInterval(doAjax,20000);
+			function doAjax(){
+				$.get('http://www.miweb.com/servicio', function(data){
+					$modulo.each(function(){
+						$(this).text(data);
+					});
+				});
+			}
+		}
+		creaModulo();
+	});
+	</code></pre><br>
+	<p>Básicamente se convierte en una sobrepoblacion de variables globales y funciones encadenadas que hacen complicado su mantenimiento y su escalabilidad.</p>
+</section>
+<section>
+	<h2>Cómo cargamos los módulos en la página</h2>
+	<p>Si tenemos muchos módulos el sistema de carga de archivos de HTML nos obliga a incluir etiquetas "script" con la carga de todos los archivos que queramos incluir.</p><br>
+	<p>Podemos incluirlos todos en un único archivo, ya sea escribiendolos todo de una tacada o bien utilizando alguna utilidad que los concatene.</p><br>
+	<p>Surge la necesidad de importar módulos y aparecen dos standares</p><br>
+	<ul>
+		<li><p><strong>AMD (Asyncronous Module Definition)</strong> - Usada por RequireJS</p></li>
+		<li><p><strong>CJS (Common JS)</strong> - Usada por Node.js</p></li>
+	</ul><br>
+	<p class="fragment fade-in">La necesidad y la polivalencia de poder utilizar cualquier módulo en cualquier sistema hace que surja un nuevo standard</p><br>
+	<ul class="fragment fade-in"><li><p><strong>UMD (Universal Module Definition)</strong> - Surge a posteriori, para poder utilizar un mismo módulo en sistemas AMD, CJS, y en el sistema clásico del espacio global de nombres (window)</p></li></ul>
+</section>
+<section>
+	<h2>¿ Y que hay de ES6 ?</h2><br>
+	<h1 class="fragment fade-in">¡¡ Tenemos Babel !!<br> Transpila nuestro código para que funcione en todos los navegadores modernos</h1><br>
+	<h2 class="fragment fade-in">Node.js es javascript, ¿ puedo utilizar librerías de Node.js?</h2><br>
+	<h1 class="fragment fade-in">¡¡ Tenemos Browserify !!<br> Permite usar módulos de Node en el cliente</h1><br>
+	<div class="fragment fade-in">
+		<img src="http://i.makeagif.com/media/10-10-2015/SiWtLs.gif" width="400px" alt="">
+		<h2>¡¡ SHOW ME THE CODE !!</h2>
+	</div>
+</section>
